@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
   	res.render('index', { title: 'Express' });
 });
 
-router.get('/test/gcmtest', function(req,res,next){
+router.get('/test/gcm', function(req,res,next){
 	var message = new gcm.Message();
 
 	var message = new gcm.Message({
@@ -62,6 +62,9 @@ router.get('/test/gcmtest', function(req,res,next){
 	});
 */
 
+});
+
+router.get('/test/apn', function(req, res, next){
 
 });
 
