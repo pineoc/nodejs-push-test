@@ -3,7 +3,7 @@ var router = express.Router();
 
 var gcm = require('node-gcm');
 
-var keydata = require('key');
+var keydata = require('./key.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -39,13 +39,15 @@ router.get('/test/gcm', function(req,res,next){
 
 	// Add the registration tokens of the devices you want to send to
 	//TODO: key.js to insert datas
-	var registrationTokens = keydata.android_device_key;
+	var registrationTokens = keydata.key_data.android_device_key;
 
 	// Send the message
 	// ... trying only once
 	sender.sendNoRetry(message, { registrationTokens: registrationTokens }, function(err, response) {
-  		if(err) console.error(err);
-  		else    console.log(response);
+  		if(err) 
+  			console.error('error : ', err);
+  		else    
+  			console.log('success : ', response);
 	});
 
 /*
