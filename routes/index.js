@@ -18,8 +18,7 @@ router.get('/test/gcm', function(req,res,next){
     	delayWhileIdle: true,
     	timeToLive: 3,
     	data: {
-        	key1: 'msg1',
-        	key2: 'msg2'
+        	key1: 'msg1'
     	},
     	notification: {
         	title: "Hello, World",
@@ -31,8 +30,7 @@ router.get('/test/gcm', function(req,res,next){
 	//add data
 	//TODO: none
 	message.addData({
-    	key1: 'message1',
-    	key2: 'message2'
+    	key1: 'msg1'
 	});
 
 	var sender = new gcm.Sender(keydata.key_data.android_key);
@@ -45,9 +43,9 @@ router.get('/test/gcm', function(req,res,next){
 	// ... trying only once
 	sender.sendNoRetry(message, { registrationTokens: registrationTokens }, function(err, response) {
   		if(err) 
-  			console.error('error : ', err);
+  			console.error('send error : ', err);
   		else    
-  			console.log('success : ', response);
+  			console.log('send success : ', response);
 	});
 
 /*
@@ -63,6 +61,7 @@ router.get('/test/gcm', function(req,res,next){
   		else    console.log(response);
 	});
 */
+  res.send('success');
 
 });
 
